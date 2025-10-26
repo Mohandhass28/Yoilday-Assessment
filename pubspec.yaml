@@ -1,0 +1,56 @@
+name: yoilday_assessment
+description: "A new Flutter project."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.2.1
+  bottom_navbar_with_indicator: ^0.0.9
+  get: ^4.7.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/svg/Home_svg.svg
+    - assets/svg/ic_baseline-notifications.svg
+    - assets/svg/ic_round-shopping-bag.svg
+    - assets/svg/Input_svg.svg
+    - assets/svg/Portfolia_svg.svg
+    - assets/svg/Profile_svg.svg
+
+    - assets/images/image_1.png
+    - assets/images/image_2.png
+    - assets/images/image_3.png
+    - assets/images/image_4.png
+    - assets/images/image_5.png
+
+    - assets/fonts/
+
+fonts:
+  - family: Roboto
+    fonts:
+      - asset: assets/fonts/Roboto-Regular.ttf
+      - asset: assets/fonts/Roboto-Italic.ttf
+        style: italic
+      - asset: assets/fonts/Roboto-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Roboto-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/Roboto-Bold.ttf
+        weight: 700
