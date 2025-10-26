@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:yoilday_assessment/core/asset/app_images.dart';
 import 'package:yoilday_assessment/core/theme/app_color.dart';
-import 'package:yoilday_assessment/presentation/home/model/home_page_model.dart';
+import 'package:yoilday_assessment/presentation/home/controller/home_page_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

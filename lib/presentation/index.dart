@@ -25,7 +25,12 @@ class RootPageState extends State<RootPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(
+      length: 4,
+      vsync: this,
+      initialIndex: 1,
+    );
+
     _tabController.addListener(() {
       setState(() {});
     });
@@ -44,71 +49,77 @@ class RootPageState extends State<RootPage>
 
       bottomNavigationBar: Material(
         color: Colors.white,
-        child: TabBar(
-          controller: _tabController,
-          indicatorColor: AppColor.primaryColor,
-          labelColor: AppColor.primaryColor,
-          overlayColor: WidgetStatePropertyAll(
-            const Color.fromARGB(48, 223, 85, 50),
+        child: Container(
+          height: 60.h, // Set a fixed height to decrease TabBar height
+          child: TabBar(
+            controller: _tabController,
+            indicatorColor: AppColor.primaryColor,
+            labelColor: AppColor.primaryColor,
+            overlayColor: WidgetStatePropertyAll(
+              const Color.fromARGB(48, 223, 85, 50),
+            ),
+            labelStyle: TextStyle(
+              color: AppColor.iconInactiveColor,
+              fontSize: 10.sp, // Reduced font size to fit smaller height
+            ),
+            unselectedLabelColor: AppColor.iconInactiveColor,
+            indicator: TopIndicator(),
+            indicatorSize: TabBarIndicatorSize.label,
+            labelPadding: EdgeInsets.symmetric(
+              vertical: 4,
+            ), // Reduced vertical padding
+            tabs: [
+              Tab(
+                icon: SvgPicture.asset(
+                  AppAssets.homeSvg,
+                  color: _tabController.index == 0
+                      ? AppColor.primaryColor
+                      : AppColor.iconInactiveColor,
+                  width: 20.w, // Reduced icon size
+                  height: 20.h,
+                ),
+                text: 'Home',
+              ),
+              Tab(
+                icon: SvgPicture.asset(
+                  AppAssets.portfoliaSvg,
+                  color: _tabController.index == 1
+                      ? AppColor.primaryColor
+                      : AppColor.iconInactiveColor,
+                  width: 20.w,
+                  height: 20.h,
+                ),
+                text: 'Portfolio',
+              ),
+              Tab(
+                icon: SvgPicture.asset(
+                  AppAssets.inputSvg,
+                  color: _tabController.index == 2
+                      ? AppColor.primaryColor
+                      : AppColor.iconInactiveColor,
+                  width: 20.w,
+                  height: 20.h,
+                ),
+                text: 'Input',
+              ),
+              Tab(
+                icon: SvgPicture.asset(
+                  AppAssets.profileSvg,
+                  color: _tabController.index == 3
+                      ? AppColor.primaryColor
+                      : AppColor.iconInactiveColor,
+                  width: 16.w,
+                  height: 16.h,
+                ),
+                text: 'Profile',
+              ),
+            ],
           ),
-          labelStyle: TextStyle(
-            color: AppColor.iconInactiveColor,
-            fontSize: 12.sp,
-          ),
-
-          unselectedLabelColor: AppColor.iconInactiveColor,
-          indicator: TopIndicator(),
-          indicatorSize: TabBarIndicatorSize.label,
-          tabs: [
-            Tab(
-              icon: SvgPicture.asset(
-                AppAssets.homeSvg,
-                color: _tabController.index == 0
-                    ? AppColor.primaryColor
-                    : AppColor.iconInactiveColor,
-                width: 16.w,
-                height: 16.h,
-              ),
-              text: 'Home',
-            ),
-            Tab(
-              icon: SvgPicture.asset(
-                AppAssets.portfoliaSvg,
-                color: _tabController.index == 1
-                    ? AppColor.primaryColor
-                    : AppColor.iconInactiveColor,
-                width: 16.w,
-                height: 16.h,
-              ),
-              text: 'Portfolio',
-            ),
-            Tab(
-              icon: SvgPicture.asset(
-                AppAssets.inputSvg,
-                color: _tabController.index == 2
-                    ? AppColor.primaryColor
-                    : AppColor.iconInactiveColor,
-                width: 16.w,
-                height: 16.h,
-              ),
-              text: 'Input',
-            ),
-            Tab(
-              icon: SvgPicture.asset(
-                AppAssets.profileSvg,
-                color: _tabController.index == 3
-                    ? AppColor.primaryColor
-                    : AppColor.iconInactiveColor,
-                width: 16.w,
-                height: 16.h,
-              ),
-              text: 'Profile',
-            ),
-          ],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
+
         children: _pages,
       ),
     );
